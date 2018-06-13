@@ -1,0 +1,53 @@
+﻿<Window x:Class="CoinIRRial.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoinIRRial"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="768" Width="1024" Loaded="Window_Loaded" Background="#FF9C9C9C" FlowDirection="RightToLeft">
+    <Grid>
+        <ListView Name="LVCoinprice" Background="{x:Null}" Margin="504,61,11.6,10.4" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Background="#FF388C86">
+                        <TextBlock Background="{x:Null}" Foreground="White" Height="40" Width="200" Text="{Binding CBrand}" FontWeight="Bold" FontSize="24" TextAlignment="Center" />
+                        <TextBlock Background="{x:Null}" Foreground="White" Height="40" Width="200" Text="{Binding CDPrice}" FontWeight="Bold" FontSize="24" TextAlignment="Center" />
+                        <TextBlock Background="{x:Null}" Foreground="White" Height="40" Width="200" Text="{Binding CPrice}" FontWeight="Bold" FontSize="24" TextAlignment="Center" />
+                        <TextBlock Background="{x:Null}" Foreground="White" Height="40" Width="200" Text="{Binding CPicture}" FontWeight="Bold" FontSize="24" TextAlignment="Center" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <!--<WrapPanel 
+                        Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                        ItemWidth="{Binding (ListView.View).ItemWidth, RelativeSource={RelativeSource AncestorType=ListView}}"
+                        MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}" 
+                        ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}" />-->
+
+                    <WrapPanel 
+                        Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                        ItemWidth="200"
+                        MinWidth="200" 
+                        ItemHeight="180"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+
+        <DataGrid AlternatingRowBackground="AliceBlue" AutoGenerateColumns="False" Background="{x:Null}" FlowDirection="RightToLeft" ItemsSource="{Binding InputDeviceAgent}" Margin="10,61,0,9.4" x:Name="AminGrid" CanUserAddRows="False" CanUserDeleteRows="False" HorizontalAlignment="Left" Width="489">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding CSubject}" Header="CSubject" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding CName}" Header="CName" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding CCount, StringFormat=N3}" Header="CCount" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding CUSDPrice, StringFormat=N2}" Header="CUSDPrice" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding CIIRPrice, StringFormat=N0}" Header="CIIRPrice" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBox x:Name="TXTIRRPrice" HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="279" Margin="12,10,0,0" TextAlignment="Center" FontSize="25"/>
+        <TextBox x:Name="TXTSUMUSDPrice" HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="279" Margin="580,10,0,0" TextAlignment="Center" FontSize="25"/>
+        <TextBox x:Name="TXTSUMIRRPrice" HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="279" Margin="296,10,0,0" TextAlignment="Center" FontSize="25"/>
+        <Button x:Name="BTN1" Content="Refresh" HorizontalAlignment="Left" Margin="864,10,0,0" VerticalAlignment="Top" Width="75" Height="46" Click="BTN1_Click"/>
+    </Grid>
+</Window>
